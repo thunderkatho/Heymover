@@ -7,8 +7,8 @@ const tiers = [
     price: "$75",
     emoji: "🗺️",
     tagline: "Get vetted movers. Skip the research.",
-    color: "#FF6B6B",
-    colorLight: "#FFF0F0",
+    color: "#FF1493",
+    colorLight: "#FFE6F0",
     desc: "Transparency in cost, moving needs, and trusted movers whether you're new to the big apple or a tenured New Yorker.",
     features: [
       "3 curated mover quotes from vetted companies",
@@ -24,8 +24,8 @@ const tiers = [
     price: "$149",
     emoji: "🏙️",
     tagline: "We handle the NYC stuff.",
-    color: "#6C63FF",
-    colorLight: "#F0EFFE",
+    color: "#9B59B6",
+    colorLight: "#F0E6FF",
     desc: "COIs, elevator reservations, management offices — the NYC gotchas that can blindside you.",
     features: [
       "Everything in Starter",
@@ -44,8 +44,8 @@ const tiers = [
     price: "$299",
     emoji: "🛡️",
     tagline: "Fully protected. You just show up.",
-    color: "#00C9A7",
-    colorLight: "#E6FAF7",
+    color: "#1ABC9C",
+    colorLight: "#E6FFFE",
     desc: "Everything coordinated end-to-end, both buildings. If anything goes wrong, we fight for you.",
     features: [
       "Everything in Coordinated",
@@ -111,8 +111,8 @@ const createMockMove = (formData, selectedTier) => {
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
     },
     updates: [
-      { id: 1, timestamp: "Today 2:30pm", title: "Old building confirmed", desc: "We spoke with management at 123 Main St. Elevator reserved for 8am-12pm on May 25th. COI required by 7pm day before.", icon: "✓", read: true },
-      { id: 2, timestamp: "Today 11:45am", title: "New building office contacted", desc: "We reached out to 456 Park Ave management. Awaiting confirmation on move-in window.", icon: "📧", read: true },
+      { id: 1, timestamp: "Today 2:30pm", title: "Old building confirmed", desc: "We spoke with management at 123 Main St. Elevator reserved for 8am-12pm on May 25th. COI required by 7pm day befo[...]
+      { id: 2, timestamp: "Today 11:45am", title: "New building office contacted", desc: "We reached out to 456 Park Ave management. Awaiting confirmation on move-in window.", icon: "📧", read:[...]
       { id: 3, timestamp: "Yesterday 4:12pm", title: "Booking confirmed", desc: "Your $149 Coordinated plan is active. Sarah Chen is your dedicated coordinator.", icon: "✓", read: true },
     ],
   };
@@ -230,7 +230,7 @@ export default function App() {
           <div style={s.stepBar}>
             {steps.map((label, i) => (
               <div key={label} style={s.stepItem}>
-                <div style={{ ...s.stepDot, background: i <= step ? (selectedTier?.color || "#6C63FF") : "#E5E7EB", color: i <= step ? "#fff" : "#9CA3AF" }}>
+                <div style={{ ...s.stepDot, background: i <= step ? (selectedTier?.color || "#9B59B6") : "#E5E7EB", color: i <= step ? "#fff" : "#9CA3AF" }}>
                   {i < step ? "✓" : i + 1}
                 </div>
                 <span style={{ fontSize: 13, fontWeight: 600, color: i <= step ? "#1a1a1a" : "#9CA3AF" }}>{label}</span>
@@ -246,7 +246,7 @@ export default function App() {
               <p style={s.bookingSubtitle}>Our fee is fixed and shown now. You pay your mover separately — we never mark it up.</p>
               <div style={s.tierGrid}>
                 {tiers.map((tier) => (
-                  <div key={tier.id} onClick={() => setSelected(tier.id)} style={{ ...s.tierCard, border: selected === tier.id ? `2.5px solid ${tier.color}` : "2px solid #E5E7EB", background: selected === tier.id ? tier.colorLight : "#fff", boxShadow: selected === tier.id ? `0 0 0 4px ${tier.color}22` : "none" }}>
+                  <div key={tier.id} onClick={() => setSelected(tier.id)} style={{ ...s.tierCard, border: selected === tier.id ? `2.5px solid ${tier.color}` : "2px solid #E5E7EB", background: sel[...]
                     <div style={{ fontSize: 28, marginBottom: 10 }}>{tier.emoji}</div>
                     <div style={{ ...s.tierBadge, background: tier.color }}>{tier.name}</div>
                     <div style={{ ...s.tierPrice, color: tier.color }}>{tier.price}</div>
@@ -294,7 +294,7 @@ export default function App() {
                 </div>
                 <div style={{ ...s.formGroup, gridColumn: "1 / -1" }}>
                   <label style={s.label}>Special items or anything we should know? (optional)</label>
-                  <textarea name="notes" value={form.notes} onChange={handleFormChange} style={{ ...s.input, height: 80, resize: "vertical" }} placeholder="e.g. tight stairwell, 4th floor walkup, large couch..." />
+                  <textarea name="notes" value={form.notes} onChange={handleFormChange} style={{ ...s.input, height: 80, resize: "vertical" }} placeholder="e.g. tight stairwell, 4th floor walkup,[...]
                 </div>
               </div>
               <div style={s.alertBox}>
@@ -331,7 +331,7 @@ export default function App() {
                 </div>
               </div>
               <div style={s.guaranteeBox}>
-                🔒 <strong>Our promise:</strong> Your coordination fee is the only thing we charge. We never mark up mover costs, never share your info, and you can cancel anytime before we start coordinating — full refund.
+                🔒 <strong>Our promise:</strong> Your coordination fee is the only thing we charge. We never mark up mover costs, never share your info, and you can cancel anytime before we sta[...]
               </div>
             </div>
           )}
@@ -339,7 +339,7 @@ export default function App() {
           <div style={s.navRow}>
             {step > 0 && <button style={s.ghostBtn} onClick={() => setStep(step - 1)}>← Back</button>}
             <button
-              style={{ ...s.nextBtn, background: selectedTier?.color || "#6C63FF", opacity: canProceed() ? 1 : 0.4, cursor: canProceed() ? "pointer" : "not-allowed" }}
+              style={{ ...s.nextBtn, background: selectedTier?.color || "#9B59B6", opacity: canProceed() ? 1 : 0.4, cursor: canProceed() ? "pointer" : "not-allowed" }}
               disabled={!canProceed()}
               onClick={() => step < steps.length - 1 ? setStep(step + 1) : setSubmitted(true)}
             >
@@ -363,6 +363,16 @@ export default function App() {
         </div>
       </nav>
 
+      {/* ORIGIN STORY */}
+      <section style={s.originStory}>
+        <div style={s.originInner}>
+          <div style={s.originBadge}>Why we built this</div>
+          <p style={s.originText}>
+            I moved to NYC alone and got completely blindsided. Hidden COI requirements, elevator windows I didn't know about, movers who vanished, extra fees buried in the fine print. I spent hours calling building offices, hunting for vetted movers, and wishing someone would just <em>tell me</em> what actually matters. I couldn't find anyone transparent or honest. So I built HeyMover for everyone who deserves better — for people moving solo, people moving to a new city, people who want to know their movers are real and their costs are fair. Because moving is hard enough. It shouldn't feel like you're fighting the system to protect yourself.
+          </p>
+        </div>
+      </section>
+
       {/* HERO */}
       <section style={s.hero}>
         <div style={s.heroGradient} />
@@ -382,16 +392,16 @@ export default function App() {
               See What's Included — from $75
             </button>
             <div style={s.pillRow}>
-              <span style={{ ...s.pill, borderColor: "#FF6B6B", color: "#FF6B6B" }}>✓ You pay movers directly</span>
-              <span style={{ ...s.pill, borderColor: "#6C63FF", color: "#6C63FF" }}>✓ Zero markups, ever</span>
-              <span style={{ ...s.pill, borderColor: "#00C9A7", color: "#00C9A7" }}>✓ Full refund if you cancel early</span>
+              <span style={{ ...s.pill, borderColor: "#FF1493", color: "#FF1493" }}>✓ You pay movers directly</span>
+              <span style={{ ...s.pill, borderColor: "#9B59B6", color: "#9B59B6" }}>✓ Zero markups, ever</span>
+              <span style={{ ...s.pill, borderColor: "#1ABC9C", color: "#1ABC9C" }}>✓ Full refund if you cancel early</span>
             </div>
           </div>
         </div>
         <div style={s.heroArt}>
           <div style={s.floatCity}>
-            {[{ h: 100, c: "#FF6B6B" }, { h: 150, c: "#6C63FF" }, { h: 80, c: "#FFD93D" }, { h: 180, c: "#00C9A7" }, { h: 120, c: "#FF6B6B" }, { h: 90, c: "#6C63FF" }, { h: 160, c: "#FFD93D" }].map((b, i) => (
-              <div key={i} style={{ width: 32, height: b.h, background: b.c, borderRadius: "4px 4px 0 0", animation: `float ${2.5 + i * 0.3}s ease-in-out infinite`, animationDelay: `${i * 0.2}s`, opacity: 0.85 }} />
+            {[{ h: 100, c: "#FF1493" }, { h: 150, c: "#9B59B6" }, { h: 80, c: "#FFA500" }, { h: 180, c: "#1ABC9C" }, { h: 120, c: "#FF69B4" }, { h: 90, c: "#9B59B6" }, { h: 160, c: "#FFA500" }].m[...]
+              <div key={i} style={{ width: 32, height: b.h, background: b.c, borderRadius: "4px 4px 0 0", animation: `float ${2.5 + i * 0.3}s ease-in-out infinite`, animationDelay: `${i * 0.2}s`,[...]
             ))}
           </div>
           <div style={{ fontSize: 44, animation: "float 3s ease-in-out infinite", textAlign: "center" }}>🚚</div>
@@ -403,7 +413,7 @@ export default function App() {
         <div style={s.gotchaInner}>
           <span style={s.gotchaLabel}>⚠️ Things NYC doesn't warn first-timers about:</span>
           <div style={s.gotchaList}>
-            {["COI required by most buildings", "Elevator reservations book out weeks", "Unlicensed movers = no recourse", "Hidden fees added after you've signed", "4-hour move windows that nobody mentions"].map(g => (
+            {["COI required by most buildings", "Elevator reservations book out weeks", "Unlicensed movers = no recourse", "Hidden fees added after you've signed", "4-hour move windows that nobod[...]
               <span key={g} style={s.gotchaItem}>{g}</span>
             ))}
           </div>
@@ -416,12 +426,12 @@ export default function App() {
         <h2 style={s.sectionTitle}>How it works</h2>
         <div style={s.stepsRow}>
           {[
-            { n: "01", emoji: "🔍", color: "#FF6B6B", bg: "#FFF0F0", title: "Pick your protection level", body: "Every plan shows exactly what's included — no surprises at checkout, no upsells hiding in the fine print." },
-            { n: "02", emoji: "📋", color: "#6C63FF", bg: "#F0EFFE", title: "We show you everything upfront", body: "Before you pay anything, you get real mover quotes and a full cost breakdown. You approve every dollar before we move forward." },
-            { n: "03", emoji: "🛡️", color: "#00C9A7", bg: "#E6FAF7", title: "We protect your move", body: "COI, both building offices, elevator booking — handled. And if something goes sideways on move day, we're your advocate." },
+            { n: "01", emoji: "🔍", color: "#FF1493", bg: "#FFE6F0", title: "Pick your protection level", body: "Every plan shows exactly what's included — no surprises at checkout, no upsell[...]
+            { n: "02", emoji: "📋", color: "#9B59B6", bg: "#F0E6FF", title: "We show you everything upfront", body: "Before you pay anything, you get real mover quotes and a full cost breakdown[...]
+            { n: "03", emoji: "🛡️", color: "#1ABC9C", bg: "#E6FFFE", title: "We protect your move", body: "COI, both building offices, elevator booking — handled. And if something goes sid[...]
           ].map((step) => (
             <div key={step.n} style={s.howCard}>
-              <div style={{ width: 56, height: 56, borderRadius: 16, background: step.bg, border: `2px solid ${step.color}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, marginBottom: 16 }}>{step.emoji}</div>
+              <div style={{ width: 56, height: 56, borderRadius: 16, background: step.bg, border: `2px solid ${step.color}`, display: "flex", alignItems: "center", justifyContent: "center", fontS[...]
               <div style={{ fontFamily: "'Fraunces',serif", fontSize: 36, fontWeight: 700, color: step.color, marginBottom: 8 }}>{step.n}</div>
               <h3 style={s.howTitle}>{step.title}</h3>
               <p style={s.howBody}>{step.body}</p>
@@ -467,7 +477,7 @@ export default function App() {
           <div style={s.sectionTagWrap}><span style={s.sectionTag}>Made for you</span></div>
           <h2 style={{ ...s.sectionTitle, textAlign: "left" }}>Built for people<br />new to NYC</h2>
           <p style={{ color: "#555", lineHeight: 1.75, fontSize: 16, marginBottom: 28 }}>
-            Moving to a new city alone is hard enough. NYC adds a layer of bureaucratic complexity that trips up even experienced movers. We built HeyMover specifically for solo movers and first-timers who don't have a friend with an uncle in the moving business.
+            Moving to a new city alone is hard enough. NYC adds a layer of bureaucratic complexity that trips up even experienced movers. We built HeyMover specifically for solo movers and first-[...]
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
@@ -486,9 +496,9 @@ export default function App() {
         </div>
         <div style={s.forYouRight}>
           {[
-            { q: "I had no idea my building needed a COI. HeyMover got it sorted in 24 hours. Literally saved my move.", name: "Priya, moved to Brooklyn", color: "#FF6B6B" },
-            { q: "As someone who'd never dealt with NYC buildings before, having someone handle the management office felt like a superpower.", name: "Marcus, moved to Astoria", color: "#6C63FF" },
-            { q: "I paid $75 and avoided what would have been a total nightmare. Worth every single penny.", name: "Sienna, moved to LES", color: "#00C9A7" },
+            { q: "I had no idea my building needed a COI. HeyMover got it sorted in 24 hours. Literally saved my move.", name: "Priya, moved to Brooklyn", color: "#FF1493" },
+            { q: "As someone who'd never dealt with NYC buildings before, having someone handle the management office felt like a superpower.", name: "Marcus, moved to Astoria", color: "#9B59B6" [...]
+            { q: "I paid $75 and avoided what would have been a total nightmare. Worth every single penny.", name: "Sienna, moved to LES", color: "#1ABC9C" },
           ].map(r => (
             <div key={r.name} style={{ background: "#fff", borderRadius: 16, padding: "24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", borderTop: `3px solid ${r.color}` }}>
               <p style={{ fontSize: 14, lineHeight: 1.7, color: "#333", marginBottom: 12, fontStyle: "italic" }}>"{r.q}"</p>
@@ -501,7 +511,7 @@ export default function App() {
       {/* FOOTER CTA */}
       <section style={s.footerCta}>
         <div style={s.footerCtaGlow} />
-        <div style={s.sectionTagWrap}><span style={{ ...s.sectionTag, color: "#FFD93D", borderColor: "#FFD93D44", background: "rgba(255,217,61,0.15)" }}>Ready?</span></div>
+        <div style={s.sectionTagWrap}><span style={{ ...s.sectionTag, color: "#FFA500", borderColor: "#FFA50044", background: "rgba(255,165,0,0.15)" }}>Ready?</span></div>
         <h2 style={s.footerTitle}>Your first NYC move,<br />handled with care.</h2>
         <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 32, fontSize: 16, maxWidth: 420, textAlign: "center" }}>
           Flat fee. Full transparency. Real human coordinator. From $75.
@@ -530,7 +540,7 @@ function DashboardHeader({ moveData, onLogout }) {
         <div>
           <div style={{ fontSize: 13, color: "#666" }}>Your Coordinator</div>
           <div style={{ fontWeight: 700 }}>{moveData.coordinator.name}</div>
-          <div style={{ fontSize: 12, color: "#00C9A7" }}>{moveData.coordinator.phone}</div>
+          <div style={{ fontSize: 12, color: "#1ABC9C" }}>{moveData.coordinator.phone}</div>
         </div>
         <img src={moveData.coordinator.avatar} alt={moveData.coordinator.name} style={{ width: 48, height: 48, borderRadius: "50%" }} />
       </div>
@@ -555,7 +565,7 @@ function DashboardNav({ activeTab, setActiveTab, unreadCount }) {
           onClick={() => setActiveTab(tab.id)}
           style={{
             ...s.navTab,
-            borderBottom: activeTab === tab.id ? "3px solid #6C63FF" : "none",
+            borderBottom: activeTab === tab.id ? "3px solid #9B59B6" : "none",
             color: activeTab === tab.id ? "#1a1a1a" : "#666",
             fontWeight: activeTab === tab.id ? 700 : 500,
             position: "relative",
@@ -580,7 +590,7 @@ function TimelineView({ moveData }) {
             <div style={s.timelineMarker}>
               <div style={{
                 ...s.timelineDot,
-                background: item.status === "completed" ? "#00C9A7" : item.status === "in-progress" ? "#6C63FF" : "#E5E7EB",
+                background: item.status === "completed" ? "#1ABC9C" : item.status === "in-progress" ? "#9B59B6" : "#E5E7EB",
                 color: "#fff",
                 fontSize: 14,
               }}>
@@ -596,8 +606,8 @@ function TimelineView({ moveData }) {
                   fontWeight: 700,
                   padding: "2px 8px",
                   borderRadius: 12,
-                  background: item.status === "completed" ? "#E6FAF7" : item.status === "in-progress" ? "#F0EFFE" : "#F5F5F5",
-                  color: item.status === "completed" ? "#00C9A7" : item.status === "in-progress" ? "#6C63FF" : "#9CA3AF",
+                  background: item.status === "completed" ? "#E6FFFE" : item.status === "in-progress" ? "#F0E6FF" : "#F5F5F5",
+                  color: item.status === "completed" ? "#1ABC9C" : item.status === "in-progress" ? "#9B59B6" : "#9CA3AF",
                 }}>
                   {item.status === "completed" ? "Done" : item.status === "in-progress" ? "In Progress" : "Upcoming"}
                 </span>
@@ -620,8 +630,8 @@ function CostBreakdownView({ moveData }) {
         {moveData.costBreakdown.map((item, idx) => (
           <div key={idx} style={{
             ...s.costRow,
-            background: item.highlight ? "#F0EFFE" : idx % 2 === 0 ? "#fff" : "#FAFAFA",
-            borderBottom: item.highlight ? "3px solid #6C63FF" : "1px solid #E5E7EB",
+            background: item.highlight ? "#F0E6FF" : idx % 2 === 0 ? "#fff" : "#FAFAFA",
+            borderBottom: item.highlight ? "3px solid #9B59B6" : "1px solid #E5E7EB",
             padding: item.highlight ? "16px 20px" : "14px 20px",
             fontWeight: item.highlight ? 700 : 500,
           }}>
@@ -629,7 +639,7 @@ function CostBreakdownView({ moveData }) {
               <div style={{ fontWeight: 700, marginBottom: 2 }}>{item.label}</div>
               {item.note && <div style={{ fontSize: 12, color: "#999" }}>{item.note}</div>}
             </div>
-            <div style={{ fontFamily: "'Fraunces',serif", fontSize: item.highlight ? 24 : 18, fontWeight: 700, color: item.highlight ? "#6C63FF" : "#1a1a1a" }}>
+            <div style={{ fontFamily: "'Fraunces',serif", fontSize: item.highlight ? 24 : 18, fontWeight: 700, color: item.highlight ? "#9B59B6" : "#1a1a1a" }}>
               ${item.amount}
             </div>
           </div>
@@ -654,7 +664,7 @@ function ChecklistView({ moveData, checkedItems, onToggle }) {
         <div style={{
           width: `${(progress / total) * 100}%`,
           height: "100%",
-          background: "linear-gradient(90deg, #6C63FF, #FF6B6B)",
+          background: "linear-gradient(90deg, #9B59B6, #FF1493)",
           borderRadius: "8px 0 0 8px",
           transition: "width 0.3s",
         }} />
@@ -667,7 +677,7 @@ function ChecklistView({ moveData, checkedItems, onToggle }) {
         const items = moveData.checklist.filter(i => i.category === category);
         return (
           <div key={category} style={{ marginBottom: 24 }}>
-            <h3 style={{ fontSize: 14, fontWeight: 700, color: "#6C63FF", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <h3 style={{ fontSize: 14, fontWeight: 700, color: "#9B59B6", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.05em" }}>
               {category}
             </h3>
             {items.map(item => (
@@ -676,7 +686,7 @@ function ChecklistView({ moveData, checkedItems, onToggle }) {
                   type="checkbox"
                   checked={checkedItems[item.id] || item.completed}
                   onChange={() => onToggle(item.id)}
-                  style={{ width: 20, height: 20, cursor: "pointer", accentColor: "#6C63FF" }}
+                  style={{ width: 20, height: 20, cursor: "pointer", accentColor: "#9B59B6" }}
                 />
                 <span style={{
                   flex: 1,
@@ -713,7 +723,7 @@ function PhotosView({ photos, onAddPhoto, photoInput, setPhotoInput }) {
           onClick={onAddPhoto}
           style={{
             ...s.nextBtn,
-            background: "#6C63FF",
+            background: "#9B59B6",
             marginTop: 0,
             width: "auto",
           }}
@@ -789,8 +799,8 @@ function SupportView({ moveData, unreadUpdates, setUnreadUpdates }) {
           {moveData.updates.map(update => (
             <div key={update.id} style={{
               ...s.updateItem,
-              background: update.read ? "#fff" : "#F0EFFE",
-              borderLeft: `4px solid ${update.read ? "#E5E7EB" : "#6C63FF"}`,
+              background: update.read ? "#fff" : "#F0E6FF",
+              borderLeft: `4px solid ${update.read ? "#E5E7EB" : "#9B59B6"}`,
             }}>
               <div style={{ display: "flex", gap: 12 }}>
                 <span style={{ fontSize: 20 }}>{update.icon}</span>
@@ -818,7 +828,7 @@ function SupportView({ moveData, unreadUpdates, setUnreadUpdates }) {
           onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
           style={{ ...s.input, height: 100, marginBottom: 12 }}
         />
-        <button style={{ ...s.nextBtn, background: "#6C63FF", width: "100%" }}>
+        <button style={{ ...s.nextBtn, background: "#9B59B6", width: "100%" }}>
           Send Message to {moveData.coordinator.name}
         </button>
       </div>
@@ -843,21 +853,26 @@ function GlobalStyles() {
 const s = {
   root: { fontFamily: "'Plus Jakarta Sans',sans-serif", background: "#FAFAFA", color: "#1a1a1a", minHeight: "100vh" },
 
-  nav: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 40px", background: "#fff", borderBottom: "1px solid #F0F0F0", position: "sticky", top: 0, zIndex: 100, flexWrap: "wrap", gap: 12 },
+  nav: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 40px", background: "#fff", borderBottom: "1px solid #F0F0F0", position: "sticky", top: 0, zIndex: 1[...]
   logo: { fontFamily: "'Fraunces',serif", fontSize: 22, fontWeight: 700, letterSpacing: "-0.01em" },
-  navTag: { fontSize: 13, color: "#6C63FF", fontWeight: 700, background: "#F0EFFE", padding: "5px 14px", borderRadius: 20 },
-  navCta: { background: "linear-gradient(135deg,#6C63FF,#FF6B6B)", color: "#fff", border: "none", borderRadius: 10, padding: "10px 22px", fontSize: 14, fontWeight: 700, cursor: "pointer" },
+  navTag: { fontSize: 13, color: "#9B59B6", fontWeight: 700, background: "#F0E6FF", padding: "5px 14px", borderRadius: 20 },
+  navCta: { background: "linear-gradient(135deg,#9B59B6,#FF1493)", color: "#fff", border: "none", borderRadius: 10, padding: "10px 22px", fontSize: 14, fontWeight: 700, cursor: "pointer" },
+
+  originStory: { padding: "64px 40px", background: "#fff", borderBottom: "1px solid #E5E7EB" },
+  originInner: { maxWidth: 720, margin: "0 auto" },
+  originBadge: { display: "inline-block", background: "linear-gradient(135deg, rgba(155,89,182,0.1), rgba(255,20,147,0.1))", border: "1px solid rgba(155,89,182,0.2)", color: "#9B59B6", borderRadius: 20, padding: "5px 16px", fontSize: 12, fontWeight: 700, marginBottom: 16, letterSpacing: "0.06em", textTransform: "uppercase" },
+  originText: { fontSize: 16, lineHeight: 1.8, color: "#555", fontStyle: "italic" },
 
   hero: { display: "flex", alignItems: "center", padding: "72px 40px 60px", gap: 48, flexWrap: "wrap", position: "relative", overflow: "hidden", background: "#fff" },
-  heroGradient: { position: "absolute", inset: 0, background: "radial-gradient(ellipse at 70% 50%, #F0EFFE 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, #FFF0F0 0%, transparent 50%)", pointerEvents: "none" },
+  heroGradient: { position: "absolute", inset: 0, background: "radial-gradient(ellipse at 70% 50%, #F0E6FF 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, #FFE6F0 0%, transparent 50%)",[...]
   heroInner: { flex: 1, minWidth: 280, maxWidth: 560, position: "relative", zIndex: 1 },
-  heroTag: { display: "inline-block", background: "rgba(108,99,255,0.1)", border: "1px solid rgba(108,99,255,0.3)", color: "#6C63FF", borderRadius: 20, padding: "6px 16px", fontSize: 13, fontWeight: 700, marginBottom: 24 },
+  heroTag: { display: "inline-block", background: "rgba(155,89,182,0.1)", border: "1px solid rgba(155,89,182,0.3)", color: "#9B59B6", borderRadius: 20, padding: "6px 16px", fontSize: 13, fontWeig[...]
   heroTitle: { fontFamily: "'Fraunces',serif", fontSize: "clamp(32px,4.5vw,52px)", lineHeight: 1.12, marginBottom: 20, fontWeight: 700 },
-  heroAccent: { color: "#6C63FF" },
-  heroAccent2: { color: "#FF6B6B" },
+  heroAccent: { color: "#9B59B6" },
+  heroAccent2: { color: "#FF1493" },
   heroSub: { fontSize: 17, lineHeight: 1.72, color: "#555", marginBottom: 36 },
   heroActions: { display: "flex", flexDirection: "column", gap: 18, alignItems: "flex-start" },
-  heroCta: { background: "linear-gradient(135deg,#6C63FF,#FF6B6B)", color: "#fff", border: "none", borderRadius: 12, padding: "16px 32px", fontSize: 16, fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 20px rgba(108,99,255,0.35)" },
+  heroCta: { background: "linear-gradient(135deg,#9B59B6,#FF1493)", color: "#fff", border: "none", borderRadius: 12, padding: "16px 32px", fontSize: 16, fontWeight: 700, cursor: "pointer", boxSha[...]
   pillRow: { display: "flex", flexWrap: "wrap", gap: 8 },
   pill: { background: "transparent", border: "1.5px solid", borderRadius: 20, padding: "5px 13px", fontSize: 12, fontWeight: 700 },
   heroArt: { flex: 1, minWidth: 220, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, position: "relative", zIndex: 1 },
@@ -865,13 +880,13 @@ const s = {
 
   gotchaBanner: { background: "#1a1a2e", padding: "18px 40px" },
   gotchaInner: { maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" },
-  gotchaLabel: { color: "#FFD93D", fontWeight: 700, fontSize: 13, flexShrink: 0 },
+  gotchaLabel: { color: "#FFA500", fontWeight: 700, fontSize: 13, flexShrink: 0 },
   gotchaList: { display: "flex", flexWrap: "wrap", gap: 8 },
   gotchaItem: { background: "rgba(255,255,255,0.1)", color: "#fff", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 500 },
 
   how: { padding: "80px 40px", background: "#FAFAFA" },
   sectionTagWrap: { textAlign: "center", marginBottom: 16 },
-  sectionTag: { display: "inline-block", background: "rgba(108,99,255,0.1)", border: "1px solid rgba(108,99,255,0.25)", color: "#6C63FF", borderRadius: 20, padding: "5px 16px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" },
+  sectionTag: { display: "inline-block", background: "rgba(155,89,182,0.1)", border: "1px solid rgba(155,89,182,0.25)", color: "#9B59B6", borderRadius: 20, padding: "5px 16px", fontSize: 12, font[...]
   sectionTitle: { fontFamily: "'Fraunces',serif", fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, marginBottom: 12, textAlign: "center" },
   sectionSub: { textAlign: "center", color: "#666", fontSize: 16, maxWidth: 560, margin: "0 auto 48px" },
   stepsRow: { display: "flex", gap: 24, flexWrap: "wrap", justifyContent: "center", marginTop: 48 },
@@ -882,7 +897,7 @@ const s = {
   pricing: { padding: "80px 0", background: "#fff" },
   pricingInner: { maxWidth: 1100, margin: "0 auto", padding: "0 40px" },
   pricingGrid: { display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center", marginTop: 48 },
-  pricingCard: { flex: 1, minWidth: 270, maxWidth: 330, borderRadius: 20, padding: "32px 24px", background: "#fff", boxShadow: "0 2px 20px rgba(0,0,0,0.06)", display: "flex", flexDirection: "column" },
+  pricingCard: { flex: 1, minWidth: 270, maxWidth: 330, borderRadius: 20, padding: "32px 24px", background: "#fff", boxShadow: "0 2px 20px rgba(0,0,0,0.06)", display: "flex", flexDirection: "colu[...]
   popularBadge: { display: "inline-block", color: "#fff", borderRadius: 20, padding: "5px 14px", fontSize: 12, fontWeight: 700, marginBottom: 16, width: "fit-content" },
   pricingName: { fontSize: 13, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 },
   featureList: { listStyle: "none", display: "flex", flexDirection: "column", gap: 8, marginBottom: 24, flex: 1 },
@@ -893,13 +908,13 @@ const s = {
   forYouLeft: { flex: 1, minWidth: 280 },
   forYouRight: { flex: 1, minWidth: 260, display: "flex", flexDirection: "column", gap: 16 },
 
-  footerCta: { background: "linear-gradient(135deg,#1a1a2e 0%,#2d1b69 50%,#1a1a2e 100%)", padding: "80px 40px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 16, position: "relative", overflow: "hidden" },
-  footerCtaGlow: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "radial-gradient(circle,rgba(108,99,255,0.3),transparent 70%)", pointerEvents: "none" },
+  footerCta: { background: "linear-gradient(135deg,#1a1a2e 0%,#4a235a 50%,#1a1a2e 100%)", padding: "80px 40px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center"[...]
+  footerCtaGlow: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "radial-gradient(circle,rgba(155,89,182,0.3),transparent [...]
   footerTitle: { fontFamily: "'Fraunces',serif", color: "#fff", fontSize: "clamp(28px,3.5vw,46px)", fontWeight: 700, lineHeight: 1.2 },
   footer: { background: "#111", padding: "24px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 },
 
   bookingPage: { minHeight: "100vh", background: "#FAFAFA" },
-  bookingHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 40px", background: "#fff", borderBottom: "1px solid #F0F0F0", flexWrap: "wrap", gap: 16, position: "sticky", top: 0, zIndex: 100 },
+  bookingHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 40px", background: "#fff", borderBottom: "1px solid #F0F0F0", flexWrap: "wrap", gap: 16, [...]
   logoSmall: { fontFamily: "'Fraunces',serif", fontSize: 20, fontWeight: 700, background: "none", border: "none", cursor: "pointer", color: "#1a1a1a" },
   stepBar: { display: "flex", gap: 20, alignItems: "center" },
   stepItem: { display: "flex", alignItems: "center", gap: 8 },
@@ -909,13 +924,13 @@ const s = {
   bookingSubtitle: { color: "#666", marginBottom: 36, fontSize: 15 },
   tierGrid: { display: "flex", gap: 16, flexWrap: "wrap" },
   tierCard: { flex: 1, minWidth: 220, borderRadius: 16, padding: "24px 20px", cursor: "pointer", transition: "all 0.2s" },
-  tierBadge: { display: "inline-block", color: "#fff", borderRadius: 20, padding: "3px 12px", fontSize: 11, fontWeight: 800, marginBottom: 8, letterSpacing: "0.06em", textTransform: "uppercase" },
+  tierBadge: { display: "inline-block", color: "#fff", borderRadius: 20, padding: "3px 12px", fontSize: 11, fontWeight: 800, marginBottom: 8, letterSpacing: "0.06em", textTransform: "uppercase" }[...]
   tierPrice: { fontFamily: "'Fraunces',serif", fontSize: 40, fontWeight: 700, lineHeight: 1, marginBottom: 10 },
 
   formGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 },
   formGroup: { display: "flex", flexDirection: "column", gap: 6 },
   label: { fontSize: 13, fontWeight: 700, color: "#333" },
-  input: { border: "1.5px solid #E5E7EB", borderRadius: 10, padding: "11px 14px", fontSize: 15, outline: "none", background: "#fff", color: "#1a1a1a", fontFamily: "'Plus Jakarta Sans',sans-serif" },
+  input: { border: "1.5px solid #E5E7EB", borderRadius: 10, padding: "11px 14px", fontSize: 15, outline: "none", background: "#fff", color: "#1a1a1a", fontFamily: "'Plus Jakarta Sans',sans-serif"[...]
   alertBox: { marginTop: 24, background: "#FFFBEB", border: "1.5px solid #FCD34D", borderRadius: 12, padding: "14px 18px", fontSize: 14, lineHeight: 1.6, color: "#92400E" },
   guaranteeBox: { marginTop: 20, background: "#F0FFF4", border: "1.5px solid #6EE7B7", borderRadius: 12, padding: "14px 18px", fontSize: 14, lineHeight: 1.6, color: "#065F46" },
   summaryBox: { background: "#fff", border: "1.5px solid #E5E7EB", borderRadius: 14, padding: "20px 24px", marginBottom: 28, display: "flex", flexDirection: "column", gap: 10 },
@@ -923,23 +938,23 @@ const s = {
   detailLabel: { color: "#9CA3AF", fontWeight: 600 },
   navRow: { display: "flex", justifyContent: "flex-end", gap: 12, marginTop: 40, alignItems: "center" },
   ghostBtn: { background: "none", border: "1.5px solid #E5E7EB", borderRadius: 10, padding: "12px 24px", fontSize: 15, cursor: "pointer", color: "#555", fontWeight: 600 },
-  nextBtn: { border: "none", borderRadius: 12, padding: "14px 32px", fontSize: 15, fontWeight: 700, cursor: "pointer", color: "#fff", boxShadow: "0 4px 16px rgba(0,0,0,0.2)", transition: "opacity 0.2s", marginTop: 20 },
+  nextBtn: { border: "none", borderRadius: 12, padding: "14px 32px", fontSize: 15, fontWeight: 700, cursor: "pointer", color: "#fff", boxShadow: "0 4px 16px rgba(0,0,0,0.2)", transition: "opacity[...]
 
   confirmScreen: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, position: "relative" },
-  confirmBg: { position: "fixed", inset: 0, background: "linear-gradient(135deg,#F0EFFE,#FFF0F0,#E6FAF7)", zIndex: 0 },
-  confirmCard: { background: "#fff", borderRadius: 24, padding: "48px 40px", maxWidth: 480, width: "100%", textAlign: "center", boxShadow: "0 8px 40px rgba(0,0,0,0.1)", position: "relative", zIndex: 1 },
+  confirmBg: { position: "fixed", inset: 0, background: "linear-gradient(135deg,#F0E6FF,#FFE6F0,#E6FFFE)", zIndex: 0 },
+  confirmCard: { background: "#fff", borderRadius: 24, padding: "48px 40px", maxWidth: 480, width: "100%", textAlign: "center", boxShadow: "0 8px 40px rgba(0,0,0,0.1)", position: "relative", zInd[...]
   checkmark: { width: 64, height: 64, borderRadius: "50%", color: "#fff", fontSize: 28, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", fontWeight: 700 },
   confirmTitle: { fontFamily: "'Fraunces',serif", fontSize: 34, fontWeight: 700, marginBottom: 14 },
   confirmSub: { color: "#555", lineHeight: 1.7, marginBottom: 28, fontSize: 15 },
   confirmBox: { background: "#FAFAFA", borderRadius: 12, padding: "18px 20px", marginBottom: 20, display: "flex", flexDirection: "column", gap: 10, textAlign: "left" },
-  newbieTip: { background: "#FFFBEB", border: "1.5px solid #FCD34D", borderRadius: 12, padding: "14px 16px", fontSize: 13, lineHeight: 1.6, color: "#92400E", marginBottom: 24, textAlign: "left" },
+  newbieTip: { background: "#FFFBEB", border: "1.5px solid #FCD34D", borderRadius: 12, padding: "14px 16px", fontSize: 13, lineHeight: 1.6, color: "#92400E", marginBottom: 24, textAlign: "left" }[...]
 
   // Dashboard styles
   dashboardRoot: { minHeight: "100vh", background: "#FAFAFA", fontFamily: "'Plus Jakarta Sans',sans-serif" },
-  dashHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 40px", background: "#fff", borderBottom: "1px solid #E5E7EB", flexWrap: "wrap", gap: 24, position: "sticky", top: 0, zIndex: 100 },
+  dashHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 40px", background: "#fff", borderBottom: "1px solid #E5E7EB", flexWrap: "wrap", gap: 24, pos[...]
   dashNav: { display: "flex", gap: 0, padding: "0 40px", background: "#fff", borderBottom: "1px solid #E5E7EB", overflowX: "auto" },
   navTab: { padding: "16px 20px", background: "none", border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, color: "#666", whiteSpace: "nowrap", position: "relative" },
-  badge: { background: "#FF6B6B", color: "#fff", borderRadius: "50%", width: 20, height: 20, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, marginLeft: 6 },
+  badge: { background: "#FF1493", color: "#fff", borderRadius: "50%", width: 20, height: 20, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700,[...]
   dashboardBody: { maxWidth: 1200, margin: "0 auto", padding: "40px 40px" },
   section: { background: "#fff", borderRadius: 16, padding: 32, boxShadow: "0 2px 16px rgba(0,0,0,0.04)" },
   sectionHead: { fontFamily: "'Fraunces',serif", fontSize: 28, fontWeight: 700, marginBottom: 24 },
@@ -969,9 +984,9 @@ const s = {
   emptyState: { textAlign: "center", padding: "60px 20px", color: "#999" },
 
   // Support
-  coordinatorCard: { background: "#F0EFFE", borderRadius: 16, padding: 24, marginBottom: 32 },
+  coordinatorCard: { background: "#F0E6FF", borderRadius: 16, padding: 24, marginBottom: 32 },
   contactMethod: { display: "flex", alignItems: "center", gap: 12, padding: 12, background: "#fff", borderRadius: 10, cursor: "pointer", transition: "background 0.2s" },
   updatesList: { display: "flex", flexDirection: "column", gap: 16 },
   updateItem: { borderRadius: 12, padding: 16, background: "#fff", border: "1px solid #E5E7EB" },
-  unreadDot: { width: 8, height: 8, borderRadius: "50%", background: "#6C63FF", flexShrink: 0 },
+  unreadDot: { width: 8, height: 8, borderRadius: "50%", background: "#9B59B6", flexShrink: 0 },
 };
