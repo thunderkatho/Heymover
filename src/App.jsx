@@ -20,7 +20,7 @@ const tiers = [
   },
   {
     id: "standard",
-    name: "Coordinated",
+    name: "Protected",
     price: "$149",
     emoji: "🏙️",
     tagline: "We handle the NYC stuff.",
