@@ -54,7 +54,7 @@ const tiers = [
       "Both building offices contacted & confirmed",
       "Day-of oversight in person - your coordinator to protect you and the things you care about",
       "Utility & address change reminder checklist",
-      "Post-move follow-up if anything goes wrong",
+      "Post-move follow-up if anything goes wrong. We advocate for you in damage, delay, or billing disputes.",
       "Priority same-day response",
     ],
   },
