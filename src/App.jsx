@@ -48,7 +48,7 @@ const tiers = [
     tagline: "Fully protected. You just show up.",
     color: "#1ABC9C",
     colorLight: "#E6FFFE",
-    desc: "Everything coordinated end-to-end, both buildings. If anything goes wrong, we fight for you.",
+    desc: "You have a dedicated move advocate managing and protecting your move. If anything goes wrong, we fight for you.",
     features: [
       "Everything in Coordinated",
       "COI coordination for both buildings",
