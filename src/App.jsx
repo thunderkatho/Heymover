@@ -56,6 +56,7 @@ const tiers = [
       "Utility & address change reminder checklist",
       "Post-move follow-up if anything goes wrong. We advocate for you in damage, delay, or billing disputes.",
       "Priority same-day response",
+      "Arrival walkthrough so you know exactly what move day will look like",
     ],
   },
 ];
